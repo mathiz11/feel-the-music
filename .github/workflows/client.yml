@@ -9,15 +9,16 @@ on:
   pull_request:
     branches: [ main ]
 
+defaults:
+  run:
+    working-directory: client
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: client
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -33,6 +34,7 @@ jobs:
     - run: npm test
 
   push_to_registry:
+    needs: build
 #    if: github.event.pull_request.merged == 'true'
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
