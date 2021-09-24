@@ -59,5 +59,4 @@ jobs:
         with:
           context: client/
           push: true
-          tags: latest
-          labels: mathiz11/github-ci_client
+          tags: mathiz11/github-ci_client:latest
