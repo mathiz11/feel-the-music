@@ -3,5 +3,5 @@ WORKDIR api/
 COPY package*.json /api/
 RUN npm ci
 COPY . /api/
-EXPOSE 3000
+EXPOSE 5000
 ENTRYPOINT npm start
