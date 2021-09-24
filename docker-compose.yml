@@ -1,0 +1,12 @@
+services:
+  api:
+    image: alexbsd/github-ci_api
+    container_name: api
+    ports:
+      - "5000:5000"
+
+  client:
+    image: alexbsd/github-ci_client
+    container_name: client
+    ports:
+      - "3000:3000"
