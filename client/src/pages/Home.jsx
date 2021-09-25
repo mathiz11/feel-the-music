@@ -1,9 +1,10 @@
-import React from "react"
+import React, {useState} from "react"
 import Layout from "../components/Layout";
 import {Button, Container, Flex, Input} from "@chakra-ui/react";
 import {BsSearch} from "react-icons/all";
 
 export default function Home() {
+    const [searchValue, setSearchValue] = useState("")
     return (
         <Layout>
             <Container my={"2rem"}>
