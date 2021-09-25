@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import Layout from "../components/Layout";
 import {Button, Container, Flex, Input} from "@chakra-ui/react";
-import {BsSearch} from "react-icons/all";
+import {BsSearch} from "react-icons/bs";
 
 export default function Home() {
     const [searchValue, setSearchValue] = useState("")

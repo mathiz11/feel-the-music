@@ -1,6 +1,6 @@
 import React from "react"
 import {Center, Flex, Text} from "@chakra-ui/react";
-import {BsMusicNote} from "react-icons/all";
+import {BsMusicNote} from "react-icons/bs";
 
 export default function Layout({children}) {
     return (
