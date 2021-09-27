@@ -20,7 +20,7 @@ app.post('/api/search', checkAccessToken, async (req, res) => {
   const token = req.headers.authorization;
 
   if (searchValue) {
-    try{
+    try {
       const results = await geniusService.research(searchValue, token);
       const hits = results.data.response.hits.map(hit => ({
         id: hit.result.id,
@@ -71,7 +71,7 @@ app.post('/api/artist', checkAccessToken, async (req, res) => {
   const token = req.headers.authorization;
 
   if (id) {
-    try{
+    try {
       const result = await geniusService.getArtist(id, token);
       const artist = result.data.response.artist;
       const descriptionArtist = ({
