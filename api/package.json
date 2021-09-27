@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"To be implemented\"",
+    "dev": "nodemon index.js",
     "start": "node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.4",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.13",
+    "simple-oauth2": "^4.2.0",
   }
 }
