@@ -32,6 +32,7 @@ app.post('/api/search', checkAccessToken, async (req, res) => {
         artistId: hit.result.primary_artist.id,
         statPageView: hit.result.stats.pageviews,
       }))
+
       let tabViewed = [];
 
       hits.forEach( hit =>
@@ -47,7 +48,7 @@ app.post('/api/search', checkAccessToken, async (req, res) => {
       res.sendStatus(500)
     }
   }
-  else{
+  else {
     res.sendStatus(401);
   }
 })
@@ -85,12 +86,12 @@ app.post('/api/artist', checkAccessToken, async (req, res) => {
       })
       res.json(descriptionArtist)
     }
-    catch(error){
+    catch (error) {
       console.log(error)
       res.sendStatus(500);
     }
   }
-  else{
+  else {
     res.sendStatus(401);
   }
 })
