@@ -21,6 +21,30 @@ const authenticate  = async () => {
     }
 }
 
+const research  = async (searchValue, token) => {
+    return axios.get(`http://api.genius.com/search?q=${encodeURI(searchValue)}`, {
+        headers: {Authorization: token}
+    })
+}
+
+const getSong  = (id, token) => {
+    return axios.get(`http://api.genius.com/songs/${id}`, {
+        headers: {Authorization: token}
+    })
+}
+
+const getArtist = (id, token) => {
+    return axios.get(`http://api.genius.com/artists/${id}?text_format=html`, {
+        headers: {Authorization: token}
+    })
+}
+
+const getSongFromArtist = (id, token) => {
+    return axios.get(`http://api.genius.com/artists/${id}/songs?sort=popularity&per_page=3`, {
+        headers: {Authorization: token}
+    })
+}
+
 module.exports={
-    geniusService:{authenticate}
+    geniusService:{authenticate, research, getSong, getArtist, getSongFromArtist}
 }
