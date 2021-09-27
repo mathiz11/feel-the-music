@@ -22,25 +22,25 @@ const authenticate  = async () => {
 }
 
 const research  = async (searchValue, token) => {
-    return axios.get(`http://api.genius.com/search?q=${encodeURI(searchValue)}`, {
+    return axios.get(process.env.API_URL + `search?q=${encodeURI(searchValue)}`, {
         headers: {Authorization: token}
     })
 }
 
 const getSong  = (id, token) => {
-    return axios.get(`http://api.genius.com/songs/${id}`, {
+    return axios.get(process.env.API_URL + `songs/${id}`, {
         headers: {Authorization: token}
     })
 }
 
 const getArtist = (id, token) => {
-    return axios.get(`http://api.genius.com/artists/${id}?text_format=html`, {
+    return axios.get(process.env.API_URL + `artists/${id}?text_format=html`, {
         headers: {Authorization: token}
     })
 }
 
 const getSongFromArtist = (id, token) => {
-    return axios.get(`http://api.genius.com/artists/${id}/songs?sort=popularity&per_page=3`, {
+    return axios.get(process.env.API_URL + `artists/${id}/songs?sort=popularity&per_page=3`, {
         headers: {Authorization: token}
     })
 }
