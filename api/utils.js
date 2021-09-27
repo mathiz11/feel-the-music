@@ -3,9 +3,9 @@ const checkAccessToken = (req, res, next) => {
 
     if (authHeader) {
         const token = authHeader.split(' ')[1];
-        if(token){
+        if (token) {
             next();
-        } else{
+        } else {
             res.sendStatus(401);
         }
     } else {
