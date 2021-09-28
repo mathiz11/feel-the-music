@@ -1,6 +1,6 @@
 const request = require('supertest')
 const app = require('./index')
-const {authenticate} = require('./geniusService')
+const { authenticate } = require('./geniusService')
 
 describe('API Tests', () => {
 
@@ -21,7 +21,7 @@ describe('API Tests', () => {
     it('should search without criteria', async () => {
         const res = await request(app)
             .post('/api/search')
-            .set({'Authorization': 'Bearer ' + clientToken, 'Accept': 'application/json'})
+            .set({ 'Authorization': 'Bearer ' + clientToken, 'Accept': 'application/json' })
             .send({
                 searchValue: 'JUL'
             })
@@ -33,7 +33,7 @@ describe('API Tests', () => {
     it('should search an artist', async () => {
         const res = await request(app)
             .post('/api/artist')
-            .set({'Authorization': 'Bearer ' + clientToken})
+            .set({ 'Authorization': 'Bearer ' + clientToken })
             .send({
                 id: 74283 //id de Jul
             })

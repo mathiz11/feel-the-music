@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const geniusService = require("./geniusService");
-const {checkAccessToken} = require("./utils");
+const { checkAccessToken } = require("./utils");
 const app = express()
 const port = process.env.PORT || 5000
 

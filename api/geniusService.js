@@ -1,4 +1,4 @@
-const {ClientCredentials} = require('simple-oauth2');
+const { ClientCredentials } = require('simple-oauth2');
 const axios = require("axios");
 
 const config = {
@@ -23,25 +23,25 @@ const authenticate = async () => {
 
 const research = async (searchValue, token) => {
     return axios.get(process.env.API_URL + `search?q=${encodeURI(searchValue)}`, {
-        headers: {Authorization: token}
+        headers: { Authorization: token }
     })
 }
 
 const getSong = (id, token) => {
     return axios.get(process.env.API_URL + `songs/${id}`, {
-        headers: {Authorization: token}
+        headers: { Authorization: token }
     })
 }
-
+ 
 const getArtist = (id, token) => {
     return axios.get(process.env.API_URL + `artists/${id}?text_format=html`, {
-        headers: {Authorization: token}
+        headers: { Authorization: token }
     })
 }
 
 const getSongFromArtist = (id, token) => {
     return axios.get(process.env.API_URL + `artists/${id}/songs?sort=popularity&per_page=3`, {
-        headers: {Authorization: token}
+        headers: { Authorization: token }
     })
 }
 
