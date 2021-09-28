@@ -1,13 +1,13 @@
 const request = require('supertest')
 const app = require('./index')
-const geniusService = require('./geniusService')
+const {authenticate} = require('./geniusService')
 
 describe('API Tests', () => {
 
     var clientToken;
 
     beforeEach(async () => {
-        var authentication = await geniusService.authenticate();
+        var authentication = await authenticate();
         clientToken = authentication.token.access_token;
     })
 
@@ -30,7 +30,7 @@ describe('API Tests', () => {
         expect(res.body.length).toBeGreaterThanOrEqual(1);
     });
 
-    it('should search artists', async () => {
+    it('should search an artist', async () => {
         const res = await request(app)
             .post('/api/artist')
             .set({'Authorization': 'Bearer ' + clientToken})
