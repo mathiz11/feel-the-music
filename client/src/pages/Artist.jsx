@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react"
 import Layout from "../components/Layout";
-import {Box, Button, Container, Flex, Heading, Icon, Image, Text} from "@chakra-ui/react";
-import {useParams} from "react-router-dom"
+import { Box, Button, Container, Flex, Heading, Icon, Image, Text } from "@chakra-ui/react";
+import { useParams } from "react-router-dom"
 import data from "../artist.json"
-import {HiBadgeCheck} from "react-icons/hi";
-import {BsPersonFill} from "react-icons/bs";
-import {FaFacebookF, FaInstagram, FaTwitter} from "react-icons/fa";
+import { HiBadgeCheck } from "react-icons/hi";
+import { BsPersonFill } from "react-icons/bs";
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 export default function Artist() {
     const [artist, setArtist] = useState()
-    let {id} = useParams()
-
+    let { id } = useParams()
+    
     useEffect(() => {
         // TODO get artist information
         setArtist(data.artist)
@@ -40,7 +40,7 @@ export default function Artist() {
                             {artist.instagram_name &&
                             <Button leftIcon={<FaInstagram/>}>{artist.instagram_name}</Button>}
                         </Flex>
-                        <div dangerouslySetInnerHTML={{__html: artist.description.html}}/>
+                        <div dangerouslySetInnerHTML={{ __html: artist.description.html }}/>
                         <Heading>Musiques récentes</Heading>
                     </Box>
                 )}

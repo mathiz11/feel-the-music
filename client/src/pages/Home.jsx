@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react"
 import Layout from "../components/Layout";
 import {
     Avatar,
@@ -14,10 +14,10 @@ import {
     Text,
     useToast
 } from "@chakra-ui/react";
-import {BsBoxArrowUpRight, BsEye, BsSearch} from "react-icons/bs";
-import {HiBadgeCheck} from "react-icons/hi";
-import {Link} from "react-router-dom";
-import {ACTIONS, useStore} from "../components/Store";
+import { BsBoxArrowUpRight, BsEye, BsSearch } from "react-icons/bs";
+import { HiBadgeCheck } from "react-icons/hi";
+import { Link } from "react-router-dom";
+import { ACTIONS, useStore } from "../components/Store";
 import apiService from "../services/apiService";
 
 export default function Home() {
@@ -25,13 +25,13 @@ export default function Home() {
     const [loading, setLoading] = useState(false)
     const [hits, setHits] = useState([])
     const toast = useToast()
-    const {state, dispatch} = useStore()
+    const { state, dispatch } = useStore()
 
     useEffect(() => {
         if (!state.bearerToken) {
             apiService.authenticate()
                 .then(response => {
-                    dispatch({type: ACTIONS.SET_TOKEN, payload: {token: response.data["access_token"]}})
+                    dispatch({ type: ACTIONS.SET_TOKEN, payload: { token: response.data["access_token"] } })
                 })
                 .catch(() => {
                     toast({
@@ -49,7 +49,6 @@ export default function Home() {
         apiService.search(state.bearerToken, searchValue)
             .then(response => {
                 setHits(response.data)
-                console.log(response.data[0])
                 setLoading(false)
             })
             .catch(() => {
