@@ -68,17 +68,24 @@ app.post('/api/artist', checkAccessToken, async (req, res) => {
 
     if (id) {
         try {
-            const result = await geniusService.getArtist(id, token);
-            const artist = result.data.response.artist;
+            const artistResult = await geniusService.getArtist(id, token);
+            const artist = artistResult.data.response.artist;
+            const songResult = await geniusService.getSongFromArtist(id, token)
+            const artistSongs = songResult.data.response.songs.map(song => ({
+                id: song.id,
+                imageUrl: song.song_art_image_thumbnail_url,
+                title: song.title
+            }))
             const descriptionArtist = ({
-                image_url: artist.image_url,
-                artistName: artist.name,
-                artistIsVerified: artist.is_verified,
-                artistFollowers_count: artist.followers_count,
-                artistFacebook_name: artist.facebook_name,
-                artistTwitter_name: artist.twitter_name,
-                artistInstagram_name: artist.instagram_name,
-                artistDescriptionHtml: artist.description.html
+                imageUrl: artist.image_url,
+                name: artist.name,
+                isVerified: artist.is_verified,
+                followers: artist.followers_count,
+                facebook: artist.facebook_name,
+                twitter: artist.twitter_name,
+                instagram: artist.instagram_name,
+                description: artist.description.html,
+                recentSongs: artistSongs
             })
             res.json(descriptionArtist)
         } catch (error) {
