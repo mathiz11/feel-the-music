@@ -6,6 +6,8 @@ import apiService from "../services/apiService";
 import { useParams } from "react-router-dom";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 
+const monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
+
 export default function Song() {
     const [song, setSong] = useState()
     const { state } = useStore()
@@ -27,6 +29,11 @@ export default function Song() {
             })
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+    function formatDate(date) {
+        const dateObject = new Date(date)
+        return `${dateObject.getDate() < 10 ? "0" + dateObject.getDate() : dateObject.getDate()} ${monthNames[dateObject.getMonth()]} ${dateObject.getFullYear()}`
+    }
+
     return (
         <Layout>
             <Container my={8}>
@@ -37,6 +44,7 @@ export default function Song() {
                               as={"h1"}>{song.title}</Text>
                         <Text fontSize={"xl"} textAlign={"center"} as={"h2"}
                               fontStyle={"italic"}>{song.album.name}</Text>
+                        <Text textAlign={"center"} fontSize={"sm"} pt={1}>{formatDate(song.releaseDate)}</Text>
                         <Center mt={3} mb={8}>
                             <Flex alignItems={"center"}>
                                 <Avatar src={song.artist.imageUrl} mr={3}/>

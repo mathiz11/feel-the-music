@@ -65,7 +65,6 @@ app.post('/api/song', checkAccessToken, async (req, res) => {
                 imageUrl: song.song_art_image_thumbnail_url,
                 album: {
                     name: song.album.name,
-                    imageUrl: song.album.cover_art_url
                 },
                 artist: {
                     name: song.album.artist.name,
