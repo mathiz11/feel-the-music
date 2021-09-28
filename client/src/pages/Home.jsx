@@ -24,7 +24,6 @@ export default function Home() {
     const [searchValue, setSearchValue] = useState()
     const [loading, setLoading] = useState(false)
     const [hits, setHits] = useState([])
-
     const toast = useToast()
     const {state, dispatch} = useStore()
 
@@ -43,14 +42,7 @@ export default function Home() {
                     })
                 })
         }
-    }, [])
-
-    /*const mostViewedHitId = useMemo(() => hits.length > 0 ?
-            hits.reduce(
-                (previous, current) =>
-                    (previous.result.stats.pageviews > current.result.stats.pageviews) ? previous : current).result.id : -1,
-        [hits]
-    )*/
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     function handleSearch() {
         setLoading(true);
@@ -69,7 +61,6 @@ export default function Home() {
                 })
                 setLoading(false)
             })
-        // TODO send search request
     }
 
     function formatViews(views) {
