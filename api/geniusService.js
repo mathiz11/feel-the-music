@@ -1,4 +1,4 @@
-const { ClientCredentials } = require('simple-oauth2');
+const {ClientCredentials} = require('simple-oauth2');
 const axios = require("axios");
 
 const config = {
@@ -11,7 +11,7 @@ const config = {
     }
 };
 
-const authenticate  = async () => {
+const authenticate = async () => {
     const client = new ClientCredentials(config);
 
     try {
@@ -21,13 +21,13 @@ const authenticate  = async () => {
     }
 }
 
-const research  = async (searchValue, token) => {
+const research = async (searchValue, token) => {
     return axios.get(process.env.API_URL + `search?q=${encodeURI(searchValue)}`, {
         headers: {Authorization: token}
     })
 }
 
-const getSong  = (id, token) => {
+const getSong = (id, token) => {
     return axios.get(process.env.API_URL + `songs/${id}`, {
         headers: {Authorization: token}
     })
@@ -45,6 +45,11 @@ const getSongFromArtist = (id, token) => {
     })
 }
 
-module.exports={
-    geniusService:{authenticate, research, getSong, getArtist, getSongFromArtist}
+module.exports = {
+    authenticate,
+    research,
+    getSong,
+    getArtist,
+    getSongFromArtist
 }
+
