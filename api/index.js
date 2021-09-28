@@ -1,23 +1,23 @@
 require('dotenv').config()
 const express = require('express')
-const {geniusService} = require("./geniusService");
-const {checkAccessToken} = require("./utils");
+const geniusService = require("./geniusService");
+const { checkAccessToken } = require("./utils");
 const app = express()
 const port = process.env.PORT || 5000
 
 app.use(express.json())
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+    res.send('Hello World!')
 })
 
 app.post('/api/authenticate', async (req, res) => {
-  const accessToken = await geniusService.authenticate();
-  res.send(accessToken);
+    const accessToken = await geniusService.authenticate();
+    res.send(accessToken);
 })
 
 app.post('/api/search', checkAccessToken, async (req, res) => {
-  const searchValue = req.body.searchValue;
-  const token = req.headers.authorization;
+    const searchValue = req.body.searchValue;
+    const token = req.headers.authorization;
 
     if (searchValue) {
         try {
@@ -33,7 +33,7 @@ app.post('/api/search', checkAccessToken, async (req, res) => {
                 statPageView: hit.result.stats.pageviews,
             }))
 
-      let tabViewed = [];
+            let tabViewed = [];
 
             hits.forEach(hit => {
                 if (!hit.statPageView) hit['statPageView'] = 0;
@@ -66,8 +66,8 @@ app.post('/api/song', checkAccessToken, async (req, res) => {
 })
 
 app.post('/api/artist', checkAccessToken, async (req, res) => {
-  const id = req.body.id;
-  const token = req.headers.authorization;
+    const id = req.body.id;
+    const token = req.headers.authorization;
 
     if (id) {
         try {
@@ -94,5 +94,7 @@ app.post('/api/artist', checkAccessToken, async (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`)
+    console.log(`Listening on port ${port}`)
 })
+
+module.exports = app
