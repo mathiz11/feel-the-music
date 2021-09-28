@@ -39,6 +39,6 @@ describe('API Tests', () => {
             })
 
         expect(res.statusCode).toEqual(200);
-        expect(res.body.artistName).toBe('JuL');
+        expect(res.body.name).toBe('JuL');
     });
 })
