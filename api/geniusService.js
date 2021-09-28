@@ -3,11 +3,11 @@ const axios = require("axios");
 
 const config = {
     client: {
-        id: process.env.CLIENT_ID,
-        secret: process.env.CLIENT_SECRET
+        id: process.env.GENIUS_CLIENT_ID,
+        secret: process.env.GENIUS_CLIENT_SECRET
     },
     auth: {
-        tokenHost: process.env.TOKEN_HOST
+        tokenHost: process.env.GENIUS_TOKEN_HOST
     }
 };
 
@@ -22,25 +22,25 @@ const authenticate = async () => {
 }
 
 const research = async (searchValue, token) => {
-    return axios.get(process.env.API_URL + `search?q=${encodeURI(searchValue)}`, {
+    return axios.get(process.env.GENIUS_API_URL + `search?q=${encodeURI(searchValue)}`, {
         headers: { Authorization: token }
     })
 }
 
 const getSong = (id, token) => {
-    return axios.get(process.env.API_URL + `songs/${id}`, {
+    return axios.get(process.env.GENIUS_API_URL + `songs/${id}`, {
         headers: { Authorization: token }
     })
 }
- 
+
 const getArtist = (id, token) => {
-    return axios.get(process.env.API_URL + `artists/${id}?text_format=html`, {
+    return axios.get(process.env.GENIUS_API_URL + `artists/${id}?text_format=html`, {
         headers: { Authorization: token }
     })
 }
 
 const getSongFromArtist = (id, token) => {
-    return axios.get(process.env.API_URL + `artists/${id}/songs?sort=popularity&per_page=3`, {
+    return axios.get(process.env.GENIUS_API_URL + `artists/${id}/songs?sort=popularity&per_page=3`, {
         headers: { Authorization: token }
     })
 }
