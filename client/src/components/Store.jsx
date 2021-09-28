@@ -1,7 +1,7 @@
 import React, {createContext, useContext, useReducer} from "react"
 
 export const initialState = {
-    token: undefined
+    bearerToken: undefined
 }
 
 export const ACTIONS = {
@@ -14,7 +14,7 @@ export const reducer = (state, action) => {
     switch (action.type) {
         case ACTIONS.SET_TOKEN:
             return {
-                token: action.payload.token
+                bearerToken: 'Bearer ' + action.payload.token
             }
         default:
             return state
