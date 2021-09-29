@@ -31,9 +31,9 @@ export default function Artist() {
 
     return (
         <Layout>
-            <Container>
+            <Container my={8}>
                 {artist ? (
-                    <Box display={"flex"} flexDirection={"column"} alignItems={"center"} my={8}>
+                    <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
                         <Image src={artist.imageUrl} boxSize={"2xs"} borderRadius={"full"}/>
                         <Flex alignItems={"center"} mt={2}>
                             <Text fontSize={"2xl"} fontWeight={"semibold"}>{artist.name}</Text>
@@ -43,7 +43,7 @@ export default function Artist() {
                             <Icon as={BsPersonFill} mr={1}/>
                             <Text fontWeight={"semibold"}>{artist.followers}</Text>
                         </Flex>
-                        <Flex w={"60%"} justifyContent={"space-around"} py={5}>
+                        <Flex w={"60%"} justifyContent={"space-around"} pt={5} pb={8}>
                             {artist.facebook && (
                                 <Link background={"#1877F2"} py={3} px={4} color={"white"} borderRadius={"full"}
                                       isExternal

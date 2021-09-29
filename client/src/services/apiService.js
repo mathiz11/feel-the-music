@@ -20,10 +20,19 @@ const getArtistById = (bearerToken, artistId) => {
     })
 }
 
+const getSongById = (bearerToken, songId) => {
+    return axios.post(`${process.env.REACT_APP_API_URL}/api/song`, { id: songId }, {
+        headers: {
+            Authorization: bearerToken
+        }
+    })
+}
+
 const apiService = {
     authenticate,
     search,
-    getArtistById
+    getArtistById,
+    getSongById
 }
 
 export default apiService

@@ -41,4 +41,16 @@ describe('API Tests', () => {
         expect(res.statusCode).toEqual(200);
         expect(res.body.name).toBe('JuL');
     });
+
+    it('should search an song', async () => {
+        const res = await request(app)
+            .post('/api/song')
+            .set({ 'Authorization': 'Bearer ' + clientToken })
+            .send({
+                id: 378195 //id de Sia
+            })
+
+        expect(res.statusCode).toEqual(200);
+        expect(res.body.artist.name).toBe('Sia');
+    });
 })

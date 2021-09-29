@@ -88,9 +88,9 @@ export default function Home() {
                             <Box py={5} display={"flex"} flexDirection={"column"}
                                  alignItems={"center"}>
                                 <Image src={hit.imageUrl}/>
-                                <Box display={"flex"} flexDirection={"column"}>
+                                <Box display={"flex"} flexDirection={"column"} py={5}>
                                     {hit.top && (
-                                        <Flex justifyContent={"center"} mt={2}>
+                                        <Flex justifyContent={"center"}>
                                             <Badge textAlign={"center"} borderRadius={"full"} px={2}>TOP</Badge>
                                         </Flex>
                                     )}

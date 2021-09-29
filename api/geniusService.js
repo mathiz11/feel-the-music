@@ -28,7 +28,7 @@ const research = async (searchValue, token) => {
 }
 
 const getSong = (id, token) => {
-    return axios.get(process.env.GENIUS_API_URL + `songs/${id}`, {
+    return axios.get(process.env.GENIUS_API_URL + `songs/${id}?text_format=html`, {
         headers: { Authorization: token }
     })
 }

@@ -46,19 +46,39 @@ app.post('/api/search', checkAccessToken, async (req, res) => {
             res.sendStatus(500)
         }
     } else {
-        res.sendStatus(401);
+        res.sendStatus(400);
     }
 })
 
 app.post('/api/song', checkAccessToken, async (req, res) => {
     const id = req.body.id;
     const token = req.headers.authorization;
+
     if (id) {
-        const result = await geniusService.getSong(id, token);
-        //ToDo Faire un traitement sur les data recup
-        res.json(result.data)
+        try {
+            const result = await geniusService.getSong(id, token);
+            const song = result.data.response.song;
+            const descriptionSong = ({
+                title: song.title,
+                releaseDate: song.release_date,
+                description: song.description.html,
+                imageUrl: song.song_art_image_thumbnail_url,
+                album: {
+                    name: song.album.name,
+                },
+                artist: {
+                    name: song.album.artist.name,
+                    imageUrl: song.album.artist.image_url
+                },
+                lyricsUrl: song.url,
+            })
+            res.json(descriptionSong)
+        } catch (error) {
+            console.log(error)
+            res.sendStatus(500);
+        }
     } else {
-        res.sendStatus(401);
+        res.sendStatus(400);
     }
 })
 
@@ -93,7 +113,7 @@ app.post('/api/artist', checkAccessToken, async (req, res) => {
             res.sendStatus(500);
         }
     } else {
-        res.sendStatus(401);
+        res.sendStatus(400);
     }
 })
 
