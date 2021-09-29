@@ -31,7 +31,7 @@ export default function Song() {
 
     function formatDate(date) {
         const dateObject = new Date(date)
-        return `${dateObject.getDate() < 10 ? "0" + dateObject.getDate() : dateObject.getDate()} ${monthNames[dateObject.getMonth()]} ${dateObject.getFullYear()}`
+        return `${dateObject.getDate()} ${monthNames[dateObject.getMonth()]} ${dateObject.getFullYear()}`
     }
 
     return (
