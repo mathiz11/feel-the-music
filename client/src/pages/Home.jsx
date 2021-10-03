@@ -72,12 +72,18 @@ export default function Home() {
         }
     }
 
+    function handleKeyDown(e) {
+        if (e.key === 'Enter') {
+            handleSearch()
+        }
+    }
+
     return (
         <Layout>
             <Container my={8}>
                 <Flex>
                     <Input placeholder={"Musique, Artiste, Paroles..."} value={searchValue}
-                           onChange={(e) => setSearchValue(e.target.value)}/>
+                           onChange={(e) => setSearchValue(e.target.value)} onKeyDown={handleKeyDown}/>
                     <IconButton isLoading={loading} ml={3} aria-label={"Rechercher"} colorScheme={"blue"}
                                 icon={<BsSearch/>}
                                 onClick={handleSearch}/>
