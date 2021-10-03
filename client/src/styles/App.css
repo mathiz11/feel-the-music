@@ -1,0 +1,10 @@
+#root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#root footer {
+    margin-top: auto;
+}
+
