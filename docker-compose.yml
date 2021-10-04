@@ -1,12 +1,12 @@
 services:
   api:
-    image: mathiz11/github-ci_api
+    image: mathiz11/github-ci_api:latest
     container_name: api
     ports:
       - "5000:5000"
 
   client:
-    image: mathiz11/github-ci_client
+    image: mathiz11/github-ci_client:latest
     container_name: client
     ports:
       - "3000:3000"
